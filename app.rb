@@ -15,14 +15,13 @@ module Cycam
     end
 
     kraken = KrakenClient.load
-    #def get_trades ; end
+    trades = kraken.private.trades_history['trades']
 
     get '/' do
       erb :index
     end
 
     get '/trades' do
-      trades = kraken.private.trades_history['trades']
       erb :trades, locals: { trades: trades }
     end
   end
