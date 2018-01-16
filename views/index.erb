@@ -1,7 +1,12 @@
 
-<!-- Bitcoin.de - Price Widget - 250x200px -->
-<div id="bitcoin-de-widget" data-size="1" data-type="dark" data-bgcolor="#000000"></div>
-<script src="https://bitcoinapi.de/price/widget.js"></script>
-
-<br >
-<img src="https://bitcoinapi.de/widget/current-btc-price" alt="Bitcoin.de-Preis" />
+<div>
+Account balance: <%= :data.balance %>
+</div>
+<div>
+  Trade overview:
+  <p>
+  <% :data.trades.each do |t| %>
+    <%= t %>
+  <% end %>
+  </p>
+</div>
