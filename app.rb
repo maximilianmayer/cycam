@@ -18,11 +18,12 @@ module Cycam
     #def get_trades ; end
 
     get '/' do
+      erb :index
+    end
+
+    get '/trades' do
       trades = kraken.private.trades_history['trades']
-          #balance: 0.0, # kraken.private.balance,
-      puts trades.class
-      puts trades
-      erb :index, locals: { trades: trades }
+      erb :trades, locals: { trades: trades }
     end
   end
 

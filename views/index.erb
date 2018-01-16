@@ -1,12 +1,7 @@
-
-<div>
-Account balance: <%= :data.balance %>
-</div>
-<div>
-  Trade overview:
-  <p>
-  <% :data.trades.each do |t| %>
-    <%= t %>
-  <% end %>
-  </p>
-</div>
+<fieldset>
+  <div class="form-group row">
+    <div class="col-sm-8">
+      <a href="/trades" role="button" class="btn btn-primary" >trades</a>
+    </div>
+  </div>
+</fieldset>
