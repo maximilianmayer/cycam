@@ -1,38 +1,25 @@
-
-<div>
-  Account balance:
-</div>
-<div>
-  Trade overview:
-  <br>
-  <div class="card">
-    <div class="card-header"> Trades</div>
-    <div class="card-body">
-  amount of trades: <%= trades.length %>
-      <table class="table">
-        <thead class="thead-dark">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">type</th>
-          <th scope="col">price</th>
-          <th scope="col">cost</th>
-          <th scope="col">fee</th>
-          <th scope="col">volume</th>
-        </tr>
-        </thead>
-        <tbody>
-    <% trades.each do |tid , data| %>
-          <tr>
-          <th scope="row"><%= tid %></th>
-          <td><%= data['type'] %></td>
-          <td><%= data['price'] %></td>
-          <td><%= data['cost'] %></td>
-          <td><%= data['fee'] %></td>
-          <td><%= data['vol'] %></td>
-          </tr>
-    <% end %>
-        </tbody>
-      </table>
-
-  </div>
-</div>
+amount of trades: <%= trades.length %>
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">type</th>
+      <th scope="col">price</th>
+      <th scope="col">cost</th>
+      <th scope="col">fee</th>
+      <th scope="col">volume</th>
+    </tr>
+    </thead>
+    <tbody>
+<% trades.each do |tid , data| %>
+      <tr>
+      <th scope="row"><%= tid %></th>
+      <td><%= data['type'] %></td>
+      <td><%= data['price'] %></td>
+      <td><%= data['cost'] %></td>
+      <td><%= data['fee'] %></td>
+      <td><%= data['vol'] %></td>
+      </tr>
+<% end %>
+    </tbody>
+  </table>
