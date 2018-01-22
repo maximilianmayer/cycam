@@ -10,8 +10,8 @@ module Cycam
 
   class Webapp < Sinatra::Base
     KrakenClient.configure do |config|
-      config.api_key = '5zqVAsOdHiZK5sV7WPdRX4si4z/CRSSO6FgKhpeIu9/pVfkKQz1oX1FE'
-      config.api_secret = 'U0SzR3KAmEUAUcgHxWQMPmYMwlsLktD7F9zBRt8D393qch9WZV5jalkklu48j0QWtdbBLE5t9apxVfyo0G7KDg=='
+      config.api_key = 'xxx'
+      config.api_secret = 'xxx'
     end
 
     kraken = KrakenClient.load
