@@ -9,9 +9,12 @@ require 'kraken_client'
 module Cycam
 
   class Webapp < Sinatra::Base
+
+    config_file = './config.yaml'
+    app_config = YAML.load(config_file)
     KrakenClient.configure do |config|
-      config.api_key = 'xxx'
-      config.api_secret = 'xxx'
+      config.api_key = app_config['kraken']['api_key']
+      config.api_secret = app_config['kraken']['api_secret']
     end
 
     kraken = KrakenClient.load
