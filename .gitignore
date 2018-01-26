@@ -52,3 +52,7 @@ build-iPhoneSimulator/
 # VIM and JetBrains editors
 .idea
 .*.swp
+
+
+# ignore config.yaml
+config.yaml
