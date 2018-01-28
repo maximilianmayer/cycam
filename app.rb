@@ -22,8 +22,15 @@ module Cycam
     trades = kraken.private.trades_history['trades']
 
     get '/' do
-      erb :index
+      bal = kraken.private.balance
+      erb :index, locals: {balance: bal}
     end
+
+    get '/trade/:id'do
+      trade = kraken.private.query_trades(txid: params[:id])
+      erb :trade, locals:  {data: trade}
+    end
+
 
     get '/trades' do
       erb :trades, locals: { trades: trades }
