@@ -31,6 +31,18 @@ module Cycam
       erb :trade, locals:  {data: trade}
     end
 
+    get '/trade/:id/:format?' do
+      trade = kraken.private.query_trades(txid: params[:id])
+      case params[:format]
+        when 'json'
+          trade.to_json
+        when 'yaml'
+          trade.to_yaml
+        else
+          redirect("/trade/#{params[:id]}")
+      end
+    end
+
 
     get '/trades' do
       erb :trades, locals: { trades: trades }
