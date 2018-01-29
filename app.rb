@@ -4,12 +4,19 @@ require 'tilt'
 require 'tilt/erb'
 require 'json'
 require 'yaml'
-require 'kraken_client'
+require_relative 'lib/db'
+require_relative 'lib/kraken'
 
 module Cycam
 
   class Webapp < Sinatra::Base
 
+    backend = Cycam::Database.new(LevelDB,false)
+
+    # derived into own class
+    #kraken = Cycam::Kraken.new
+    #
+    # old way - works
     config_file = './config.yaml'
     app_config = YAML.load_file(config_file)
 
