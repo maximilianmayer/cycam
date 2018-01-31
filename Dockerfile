@@ -1,11 +1,12 @@
 FROM ruby:2.4-alpine3.7
 LABEL Maintainer="Maximilian Mayer <mayer.maximilian@gmail.com>"
-LABEL version="0.1.1"
+LABEL version="0.1.2"
 LABEL description="Dockerfile for CyCAM application"
 
 
 COPY app.rb /opt/cycam/
 COPY config.ru /opt/cycam/
+COPY docker-puma.rb /opt/cycam/
 COPY config.yaml /opt/cycam/
 COPY Gemfile /opt/cycam/
 COPY views/ /opt/cycam/
