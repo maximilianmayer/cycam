@@ -1,3 +1,3 @@
 require './app'
 
-Cycam::Webapp.run!
+run Cycam::Webapp
