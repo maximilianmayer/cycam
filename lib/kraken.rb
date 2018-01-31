@@ -1,4 +1,5 @@
 require 'kraken_client'
+require_relative 'db'
 
 module Cycam
   class Kraken

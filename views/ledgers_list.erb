@@ -1,0 +1,34 @@
+amount of ledger entries: <%= ledgers.length %>
+<table class="table table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">ref. ID</th>
+    <th scope="col">time</th>
+    <th scope="col">type</th>
+    <th scope="col">asset</th>
+    <th scope="col">amount</th>
+    <th scope="col">fee</th>
+    <th scope="col">balance</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% ledgers.each do |tid, data| %>
+    <tr>
+      <th scope="row"><%= tid %></th>
+      <td>
+        <% if data['type'] == 'trade' %><a href="/trade/<%= data['refid'] %>"><%= data['refid'] %></a>
+        <% else %>
+          <%= data['refid'] %>
+        <% end %>
+      </td>
+      <td><%= data['time'] %></td>
+      <td><%= data['type'] %></td>
+      <td><%= data['asset'] %></td>
+      <td><%= data['amount'] %></td>
+      <td><%= data['fee'] %></td>
+      <td><%= data['balance'] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

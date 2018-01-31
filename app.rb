@@ -11,7 +11,7 @@ module Cycam
 
   class Webapp < Sinatra::Base
 
-    backend = Cycam::Database.new(LevelDB,false)
+    backend = Cycam::Database.new('LevelDB', false)
 
     # derived into own class
     #kraken = Cycam::Kraken.new
@@ -50,9 +50,13 @@ module Cycam
       end
     end
 
-
     get '/trades' do
       erb :trades, locals: { trades: trades }
+    end
+
+    get '/ledgers' do
+      ledgers = kraken.private.ledgers
+      erb :ledgers_list, locals: {ledgers: ledgers['ledger']}
     end
 
     get '/config' do
