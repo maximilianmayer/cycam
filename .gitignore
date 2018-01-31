@@ -54,5 +54,6 @@ build-iPhoneSimulator/
 .*.swp
 
 
-# ignore config.yaml
+# ignore app specific stuff
 config.yaml
+/db/

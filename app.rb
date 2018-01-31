@@ -4,12 +4,19 @@ require 'tilt'
 require 'tilt/erb'
 require 'json'
 require 'yaml'
-require 'kraken_client'
+require_relative 'lib/db'
+require_relative 'lib/kraken'
 
 module Cycam
 
   class Webapp < Sinatra::Base
 
+    backend = Cycam::Database.new(LevelDB,false)
+
+    # derived into own class
+    #kraken = Cycam::Kraken.new
+    #
+    # old way - works
     config_file = './config.yaml'
     app_config = YAML.load_file(config_file)
 
@@ -22,8 +29,27 @@ module Cycam
     trades = kraken.private.trades_history['trades']
 
     get '/' do
-      erb :index
+      bal = kraken.private.balance
+      erb :index, locals: {balance: bal}
     end
+
+    get '/trade/:id'do
+      trade = kraken.private.query_trades(txid: params[:id])
+      erb :trade, locals:  {data: trade}
+    end
+
+    get '/trade/:id/:format?' do
+      trade = kraken.private.query_trades(txid: params[:id])
+      case params[:format]
+        when 'json'
+          trade.to_json
+        when 'yaml'
+          trade.to_yaml
+        else
+          redirect("/trade/#{params[:id]}")
+      end
+    end
+
 
     get '/trades' do
       erb :trades, locals: { trades: trades }
