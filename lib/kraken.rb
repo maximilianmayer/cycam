@@ -1,10 +1,9 @@
 require 'kraken_client'
-require_relative 'db'
 
 module Cycam
   class Kraken
 
-    config_file = './config.yaml'
+    config_file = '../config.yaml'
     @app_config = YAML.load_file(config_file)
 
     KrakenClient.configure do |config|
@@ -14,13 +13,13 @@ module Cycam
 
     @client = KrakenClient.load
 
+    def balance
+      @client.private.balance
+    end
+
     def trades
       @client.private.trades_history['trades']
     end
 
-    def balance
-      @client.private.balance
-    end
   end
-
 end
